@@ -22,3 +22,7 @@
 **resources:** css, view etc...
 
 **start:** tudo que tiver dentro dessa pasta irá ser inicializado somente uma vez no momento que ligamos o servidor.  
+
+# NODE ACE  
+`node ace`
+
