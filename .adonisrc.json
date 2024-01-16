@@ -13,6 +13,7 @@
     "Contracts": "contracts"
   },
   "preloads": [
+    "./start/api.routes",
     "./start/routes",
     "./start/kernel"
   ],
