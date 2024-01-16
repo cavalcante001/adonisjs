@@ -1,7 +1,10 @@
-// import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 export default class HomeController {
     async index({view}) {
-        return view.render('welcome');
+        return view.render('painel.homepage', {
+            usuario: 'paulo.v.gomes',
+            sistema: 'caravelas'
+        });
     }
 
     async sobre() {
