@@ -19,7 +19,7 @@ export default class HomeController {
         return view.render('painel/homepage', dados);
     }
 
-    async sobre() {
-        return 'Sobre Nós'
+    async sobre({view}) {
+        return view.render('painel/sobre');
     }
 }
