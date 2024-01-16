@@ -3,9 +3,11 @@
 export default class PainelsController {
     protected users = [{
         id: 1,
+        slug: 'steve',
         name: 'Paulo Gomes'
     }, {
         id: 2,
+        slug: 'jobs',
         name: 'Fulano do Sicrano'
     }
     ];
@@ -20,9 +22,20 @@ export default class PainelsController {
         }
     }
 
-    async usuario({params}) {
+    async usuarioById({params}) {
         let myRequestedUserId = +params['id'];
         let myUser = this.users.find(user => user.id === myRequestedUserId);
+
+        if(myUser) {
+            return myUser;
+        } else {
+            return {error: "Nenhum usuário encontrado"}
+        }
+    }
+
+    async usuarioBySlug({params}) {
+        let myRequestedUserId = params['slug'];
+        let myUser = this.users.find(user => user.slug === myRequestedUserId);
 
         if(myUser) {
             return myUser;
