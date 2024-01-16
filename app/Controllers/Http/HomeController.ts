@@ -13,9 +13,10 @@ export default class HomeController {
                     tecnologias: ['javascript, php, python'],
                     admin: false
                 }
-            ]
+            ],
+            script: console.log('chega até aqui')
         }
-        return view.render('painel.homepage', dados);
+        return view.render('painel/homepage', dados);
     }
 
     async sobre() {
