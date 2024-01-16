@@ -12,21 +12,25 @@ export default class PainelsController {
     }
     ];
 
-    async index({request}) {
-        return {
-            response: 'Index do painel',
-            ip: request.ip(),
-            ips: request.ips(),
-            method: request.method(),
-            language: request.language(),
-            qs: request.qs(),
-            url: request.url(),
-            completeuRL: request.completeUrl(),
-            input: request.all(),
-            only: request.only(['idade']),
-            except: request.except(['idade']),
-            headers: request.headers(),
-        }
+    async index({request, response}) {
+        let json = {hello: 'world'};
+
+        // return response.status(201).send(json);
+        return response.redirect().toPath('/api/painel/usuarios/1');
+        // return response.send({
+        //     response: 'Index do painel',
+        //     ip: request.ip(),
+        //     ips: request.ips(),
+        //     method: request.method(),
+        //     language: request.language(),
+        //     qs: request.qs(),
+        //     url: request.url(),
+        //     completeuRL: request.completeUrl(),
+        //     input: request.all(),
+        //     only: request.only(['idade']),
+        //     except: request.except(['idade']),
+        //     headers: request.headers(),
+        // });
     }
 
     async usuarios() {
