@@ -5,11 +5,13 @@ export default class HomeController {
             usuarios: [
                 {
                     nome: 'Paulo Gomes',
-                    tecnologias: ['html, css, javascript']
+                    tecnologias: ['html, css, javascript'],
+                    admin: true,
                 }, 
                 {
                     nome: 'José da silva',
-                    tecnologias: ['javascript, php, python']
+                    tecnologias: ['javascript, php, python'],
+                    admin: false
                 }
             ]
         }

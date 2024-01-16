@@ -11,7 +11,29 @@
     <h2> Usuarios: </h2>
     <ul>
         @each((usuario, index) in usuarios)
-            <li>{{index + 1}}. {{usuario.nome}} - {{usuario.tecnologias}}</li>
+            @if(usuario.admin) 
+                <li>{{index + 1}}. {{usuario.nome}} - {{usuario.tecnologias}} <b>administrador</b></li>
+            @else
+                <li>{{index + 1}}. {{usuario.nome}} - {{usuario.tecnologias}}</li>
+            @end
+        @end
+    </ul>
+
+    <h2>Administradores: </h2>
+    <ul>
+        @each(usuario in usuarios)
+            @if(usuario.admin) 
+                <li>{{usuario.nome}}</li>
+            @end
+        @end
+    </ul>
+
+    <h2>Administradores: </h2>
+    <ul>
+        @each(usuario in usuarios)
+            @if(usuario.admin) 
+                <li>{{usuario.nome}}</li>
+            @end
         @end
     </ul>
 </body>
