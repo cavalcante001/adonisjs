@@ -12,8 +12,21 @@ export default class PainelsController {
     }
     ];
 
-    async index() {
-        return { response: 'Index do Painel' }
+    async index({request}) {
+        return {
+            response: 'Index do painel',
+            ip: request.ip(),
+            ips: request.ips(),
+            method: request.method(),
+            language: request.language(),
+            qs: request.qs(),
+            url: request.url(),
+            completeuRL: request.completeUrl(),
+            input: request.all(),
+            only: request.only(['idade']),
+            except: request.except(['idade']),
+            headers: request.headers(),
+        }
     }
 
     async usuarios() {
@@ -22,29 +35,33 @@ export default class PainelsController {
         }
     }
 
-    async usuarioById({params}) {
+    async usuarioById({ params }) {
+        if (!params['id']) {
+            return this.users;
+        }
         let myRequestedUserId = +params['id'];
         let myUser = this.users.find(user => user.id === myRequestedUserId);
 
-        if(myUser) {
+        if (myUser) {
             return myUser;
         } else {
-            return {error: "Nenhum usuário encontrado"}
+            return { error: "Nenhum usuário encontrado" }
         }
+
     }
 
-    async usuarioBySlug({params}) {
+    async usuarioBySlug({ params }) {
         let myRequestedUserId = params['slug'];
         let myUser = this.users.find(user => user.slug === myRequestedUserId);
 
-        if(myUser) {
+        if (myUser) {
             return myUser;
         } else {
-            return {error: "Nenhum usuário encontrado"}
+            return { error: "Nenhum usuário encontrado" }
         }
     }
 
-    async admin() {
-        return { response: 'rota admin' }
+    async docs({params}) {
+        return params['*'][0];
     }
 }
