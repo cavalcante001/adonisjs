@@ -24,5 +24,9 @@
 **start:** tudo que tiver dentro dessa pasta irá ser inicializado somente uma vez no momento que ligamos o servidor.  
 
 # NODE ACE  
-`node ace`
+`node ace`  
+
+`node ace make:controller Home`  
+
+
 
