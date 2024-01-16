@@ -7,8 +7,12 @@
     <title>Meu primeiro site com AdonisJS</title>
 </head>
 <body>
-    <h2>Olá {{ usuario }}.</h2>
-    <h2>Sistema: {{sistema}}</h2>
-    <h2>Tecnologias: {{linguagens}}</h2>
+    <h1>Hello World</h1>
+    <h2> Usuarios: </h2>
+    <ul>
+        @each((usuario, index) in usuarios)
+            <li>{{index + 1}}. {{usuario.nome}} - {{usuario.tecnologias}}</li>
+        @end
+    </ul>
 </body>
 </html>
