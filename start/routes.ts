@@ -66,3 +66,15 @@ Route.get('/update', async () => {
     // }
     return user;
 })
+
+Route.get('/delete', async () => {
+    // let user = await User.find(1);
+    // user?.delete();
+
+    let users = await User.all();
+    users.map((user) => {
+        user.delete();
+    })
+
+    return 'Usuários deletados com sucesso'
+})
