@@ -27,11 +27,18 @@ import User from 'App/Models/User';
 // UPDATE
 // DELETE
 Route.get('/', async () => {
-    const user = new User();
-    user.name = 'teste';
-    user.password = '123456';
-    user.age = 24;
-    await user.save();
+    // Dados de um formulário
+    let _json = {
+        name: 'Paulo Gomes',
+        password: '1234',
+        age: 24
+    }
+    
+    const user = await User.create({
+        name: 'Maria',
+        age: 130,
+        password: '123@'
+    })
 
     return {
         objeto: user,
