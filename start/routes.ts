@@ -22,26 +22,47 @@ import Route from '@ioc:Adonis/Core/Route'
 import User from 'App/Models/User';
 // CRUD
 
-// CREATE
-// READ
-// UPDATE
-// DELETE
-Route.get('/', async () => {
-    // Dados de um formulário
-    let _json = {
-        name: 'Paulo Gomes',
-        password: '1234',
-        age: 24
-    }
-    
-    const user = await User.create({
-        name: 'Maria',
-        age: 130,
-        password: '123@'
-    })
+Route.get('/create', async () => {
+    const user = await User.createMany([
+        {
+            name: 'Maria',
+            age: 130,
+            password: '123@'
+        }, {
+            name: 'João',
+            age: 130,
+            password: '123s@'
+        }]
+    )
 
     return {
         objeto: user,
-        persistido: user.$isPersisted
     };
+})
+
+Route.get('/read', async () => {
+    // let users = await User.all();
+
+    // let user = await User.first();
+
+    // let user = await User.find(8);
+
+    // let user = await User.findBy(`name`, 'João');
+
+    let users = await User.query().where('age', 130).first();
+
+    return users;
+})
+
+Route.get('/update', async () => {
+    // Dados atualizados:
+    let _json = {name: 'Paulo Atualizado 2', age: 5};
+    let user = await User.query().where('id', 1).update({name: 'Teste'});
+    // let user = await User.find(1);
+    // if(user) {
+    //     user.merge(_json);
+    //     // user.name = 'Nome do Sicrano Atualizado';
+    //     user.save();
+    // }
+    return user;
 })
