@@ -19,7 +19,22 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import User from 'App/Models/User';
+// CRUD
 
-Route.get('/', 'HomeController.index');
-Route.get('/sobre', 'HomeController.sobre');
+// CREATE
+// READ
+// UPDATE
+// DELETE
+Route.get('/', async () => {
+    const user = new User();
+    user.name = 'teste';
+    user.password = '123456';
+    user.age = 24;
+    await user.save();
 
+    return {
+        objeto: user,
+        persistido: user.$isPersisted
+    };
+})
