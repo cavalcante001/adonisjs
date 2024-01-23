@@ -19,62 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import PostsController from 'App/Controllers/Http/PostsController';
 import User from 'App/Models/User';
-// CRUD
 
-Route.get('/create', async () => {
-    const user = await User.createMany([
-        {
-            name: 'Maria',
-            age: 130,
-            password: '123@'
-        }, {
-            name: 'João',
-            age: 130,
-            password: '123s@'
-        }]
-    )
-
-    return {
-        objeto: user,
-    };
-})
-
-Route.get('/read', async () => {
-    // let users = await User.all();
-
-    // let user = await User.first();
-
-    // let user = await User.find(8);
-
-    // let user = await User.findBy(`name`, 'João');
-
-    let users = await User.query().where('age', 130).first();
-
-    return users;
-})
-
-Route.get('/update', async () => {
-    // Dados atualizados:
-    let _json = {name: 'Paulo Atualizado 2', age: 5};
-    let user = await User.query().where('id', 1).update({name: 'Teste'});
-    // let user = await User.find(1);
-    // if(user) {
-    //     user.merge(_json);
-    //     // user.name = 'Nome do Sicrano Atualizado';
-    //     user.save();
-    // }
-    return user;
-})
-
-Route.get('/delete', async () => {
-    // let user = await User.find(1);
-    // user?.delete();
-
-    let users = await User.all();
-    users.map((user) => {
-        user.delete();
-    })
-
-    return 'Usuários deletados com sucesso'
-})
+Route.resource('/posts', 'PostsController').apiOnly();
